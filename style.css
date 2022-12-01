@@ -75,16 +75,20 @@ body {
 }
 
 #container.tab-opened #left-side-bar #memo-list div {
-    width: 100%;
+    width: 300px;
+    height: 60px;
     text-overflow: ellipsis;
     font-size: 1rem;
     padding: .3rem 1.5rem;
     overflow: hidden;
+
 }
 
 #container.tab-closed #left-side-bar #memo-list div {
     font-size: 0;
     text-align: center;
+    height: 60px;
+    line-height: 60px;
 }
 
 #container.tab-closed #left-side-bar #memo-list div::first-letter {
