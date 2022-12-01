@@ -4,6 +4,8 @@
 
 body {
     font-family: "BIZ UDPGothic", sans-serif;
+    width: 100vw;
+    overflow-x: hidden;
 }
 
 #container {
@@ -15,15 +17,13 @@ body {
 }
 
 #container #memo {
-    border-left: 1px solid #333;
+
     height: 100%;
     transition: .5s;
-    padding: 3rem;
+    padding: min(5vw, 3rem);
     font-size: 1.1rem;
     resize: none;
-    border-bottom: 0;
-    border-right: 0;
-    border-top: 0;
+    border: none;
 
 }
 
@@ -41,6 +41,7 @@ body {
 
 #left-side-bar {
     transition: .5s;
+    border-right: 1px solid #333;
 }
 
 #container.tab-opened #left-side-bar {
@@ -229,6 +230,7 @@ body {
     }
 }
 
+
 .hover-button-container {
     position: absolute;
     right: 15px;
@@ -256,6 +258,24 @@ body {
     animation: opacity-change .5s linear 0s infinite normal none;
 }
 
+@media screen and (max-width: 900px) {
+    .hover-button-container {
+        top: calc(100vh - 100px);
+    }
+
+    #container.tab-opened #memo {
+        width: 0px;
+        display: none;
+    }
+
+    #container.tab-opened #left-side-bar {
+        width: 100vw;
+    }
+
+    #container.tab-opened #left-side-bar button {
+        transform: translateX(calc(100vw - 70px)) rotateZ(180deg);
+    }
+}
 
 footer {
     display: flex;
