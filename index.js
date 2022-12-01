@@ -5,6 +5,14 @@ window.addEventListener("DOMContentLoaded", () => {
     .addEventListener("click", onSidebarButtonClick);
 
   document.querySelector("#memo").addEventListener("input", onChangeMemo);
+  document
+    .querySelector("#moveup-button")
+    .addEventListener("click", moveupMemo);
+  document
+    .querySelector("#movedown-button")
+    .addEventListener("click", movedownMemo);
+
+  // Delete button needs long click
   let deleteButton = document.querySelector("#delete-button");
   let deleteButtonMouseDownAt = null;
   deleteButton.addEventListener(
@@ -21,12 +29,6 @@ window.addEventListener("DOMContentLoaded", () => {
     }
     deleteMemo();
   });
-  document
-    .querySelector("#moveup-button")
-    .addEventListener("click", moveupMemo);
-  document
-    .querySelector("#movedown-button")
-    .addEventListener("click", movedownMemo);
 });
 
 let memoList = [];
