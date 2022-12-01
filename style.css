@@ -254,6 +254,7 @@ body {
 .hover-button-container span {
     font-size: 2rem;
     user-select: none;
+    user-select: none;
 }
 
 .hover-button-container button:hover {
