@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&family=DotGothic16&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
+@import url('./reset.css');
+
+body {
+    font-family: "BIZ UDPGothic", sans-serif;
+}
+
+#container {
+    width: 100%;
+    height: calc(100vh - 30px);
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #333;
+}
+
+#container #memo {
+    border-left: 1px solid #333;
+    height: 100%;
+    transition: .5s;
+    padding: 3rem;
+    font-size: 1.1rem;
+    resize: none;
+    border-bottom: 0;
+    border-right: 0;
+    border-top: 0;
+
+}
+
+#container.tab-closed #memo {
+    width: calc(100vw - 70px);
+}
+
+#container #memo:focus {
+    outline: none;
+}
+
+#container.tab-opened #memo {
+    width: calc(100vw - 300px);
+}
+
+#left-side-bar {
+    transition: .5s;
+}
+
+#container.tab-opened #left-side-bar {
+    width: 300px;
+}
+
+#container.tab-closed #left-side-bar {
+    width: 70px;
+}
+
+#container #left-side-bar button {
+    width: 70px;
+    height: 70px;
+    margin: auto;
+    border: 0;
+    background-color: inherit;
+    transition: .5s;
+    user-select: none;
+}
+
+#container.tab-opened #left-side-bar button {
+    transform: translateX(230px) rotateZ(180deg);
+}
+
+#container.tab-opened #left-side-bar #memo-list {
+    height: calc(100vh - 30px - 70px);
+    overflow-y: scroll;
+}
+
+#container.tab-opened #left-side-bar #memo-list div time {
+    font-size: .5rem;
+}
+
+#container.tab-opened #left-side-bar #memo-list div {
+    width: 100%;
+    text-overflow: ellipsis;
+    font-size: 1rem;
+    padding: .3rem 1.5rem;
+    overflow: hidden;
+}
+
+#container.tab-closed #left-side-bar #memo-list div {
+    font-size: 0;
+    text-align: center;
+}
+
+#container.tab-closed #left-side-bar #memo-list div::first-letter {
+    font-size: 1.3rem;
+}
+
+#container #left-side-bar #memo-list div.selected {
+    background-color: #000;
+    color: #fff;
+}
+
+#delete-button {
+    color: #e33;
+    margin-left: 20px;
+}
+
+#delete-button:active {
+    animation: delete-button-rage 2s ease-in 0s 1 normal none;
+}
+
+@keyframes opacity-change {
+    from {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes delete-button-rage {
+    from {
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+
+    5% {
+        pacity: 0;
+        transform: rotate(40deg);
+    }
+
+    10% {
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+
+    15% {
+        opacity: 0;
+        transform: rotate(-40deg);
+    }
+
+    20% {
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+
+    25% {
+        opacity: 0;
+        transform: rotate(30deg);
+    }
+
+    30% {
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+
+    35% {
+        opacity: 0;
+        transform: rotate(-30deg);
+    }
+
+    40% {
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+
+    45% {
+        opacity: 0;
+        transform: rotate(30deg);
+    }
+
+    50% {
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+
+    55% {
+        opacity: 0;
+        transform: rotate(-25deg);
+    }
+
+    60% {
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+
+    65% {
+        opacity: 0;
+        transform: rotate(20deg);
+    }
+
+    70% {
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+
+    75% {
+        opacity: 0;
+        transform: rotate(-15deg);
+    }
+
+    80% {
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+
+    85% {
+        opacity: 0;
+        transform: rotate(10deg);
+    }
+
+    90% {
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+
+    95% {
+        opacity: 0;
+        transform: rotate(-5deg);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.hover-button-container {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    display: flex;
+    justify-content: space-between;
+    width: 220px;
+    height: 70px;
+}
+
+.hover-button-container button {
+    width: 70px;
+    height: 70px;
+    background-color: transparent;
+    border: 0;
+    user-select: none;
+}
+
+.hover-button-container span {
+    font-size: 2rem;
+    user-select: none;
+}
+
+.hover-button-container button:hover {
+    animation: opacity-change .5s linear 0s infinite normal none;
+}
+
+
+footer {
+    display: flex;
+    justify-content: center;
+    font-family: "DotGothic16", sans-serif;
+}
