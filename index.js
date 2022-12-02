@@ -138,6 +138,9 @@ function genelateMemoListItem(text, timeText, idx) {
   elem.addEventListener("click", () => {
     currentMemoIdx = idx;
     updateMemo();
+    if (isSmartPhone() && isTabOpened()) {
+      onSidebarButtonClick();
+    }
   });
   if (idx === currentMemoIdx) {
     elem.className = "selected";
@@ -179,10 +182,6 @@ function deleteMemo() {
   currentMemoIdx = null;
   updateMemo();
   save();
-
-  if (isSmartPhone() && isTabOpened()) {
-    onSidebarButtonClick();
-  }
 }
 
 function isSmartPhone() {
