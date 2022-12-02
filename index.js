@@ -29,6 +29,10 @@ window.addEventListener("DOMContentLoaded", () => {
     }
     deleteMemo();
   });
+
+  if (isSmartPhone()) {
+    deleteButton.oncontextmenu = () => false;
+  }
 });
 
 let memoList = [];
@@ -173,4 +177,12 @@ function deleteMemo() {
   currentMemoIdx = null;
   updateMemo();
   save();
+}
+
+function isSmartPhone() {
+  if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
+    return true;
+  } else {
+    return false;
+  }
 }
