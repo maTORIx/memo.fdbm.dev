@@ -92,6 +92,7 @@ body {
     text-align: center;
     height: 60px;
     line-height: 60px;
+    user-select: none;
 }
 
 #container.tab-closed #left-side-bar #memo-list div::first-letter {

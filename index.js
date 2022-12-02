@@ -76,11 +76,15 @@ function setMemo(memoIdx, text) {
 
 function onSidebarButtonClick() {
   let container = document.querySelector("#container");
-  if (container.className == "tab-opened") {
+  if (isTabOpened()) {
     container.className = "tab-closed";
   } else {
     container.className = "tab-opened";
   }
+}
+
+function isTabOpened() {
+  return document.querySelector("#container").className === "tab-opened";
 }
 
 let saving = false;
@@ -109,13 +113,6 @@ function generateMemoListHTML(memoList) {
   result.id = "memo-list";
 
   let newMemoListItem = genelateMemoListItem("+ New Memo", "now");
-  newMemoListItem.addEventListener("click", () => {
-    currentMemoIdx = null;
-    updateMemo();
-  });
-  if (currentMemoIdx == null) {
-    newMemoListItem.className = "selected";
-  }
   result.appendChild(newMemoListItem);
 
   for (let i = 0; i < memoList.length; i++) {
@@ -123,20 +120,13 @@ function generateMemoListHTML(memoList) {
     let date = new Date(memoList[i].lastModified);
     let time =
       date.toLocaleDateString("ja-JP") + " " + date.toLocaleTimeString("ja-JP");
-    let elem = genelateMemoListItem(text, time);
-    elem.addEventListener("click", () => {
-      currentMemoIdx = i;
-      updateMemo();
-    });
-    if (i == currentMemoIdx) {
-      elem.className = "selected";
-    }
+    let elem = genelateMemoListItem(text, time, i);
     result.appendChild(elem);
   }
   return result;
 }
 
-function genelateMemoListItem(text, timeText) {
+function genelateMemoListItem(text, timeText, idx) {
   let elem = document.createElement("div");
   let p = document.createElement("p");
   let time = document.createElement("time");
@@ -145,6 +135,13 @@ function genelateMemoListItem(text, timeText) {
   time.textContent = timeText;
   elem.appendChild(p);
   elem.appendChild(time);
+  elem.addEventListener("click", () => {
+    currentMemoIdx = idx;
+    updateMemo();
+  });
+  if (idx === currentMemoIdx) {
+    elem.className = "selected";
+  }
   return elem;
 }
 
@@ -182,6 +179,10 @@ function deleteMemo() {
   currentMemoIdx = null;
   updateMemo();
   save();
+
+  if (isSmartPhone() && isTabOpened()) {
+    onSidebarButtonClick();
+  }
 }
 
 function isSmartPhone() {
