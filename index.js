@@ -1,19 +1,19 @@
 window.addEventListener("DOMContentLoaded", () => {
   pullData();
   document
-    .querySelector("#sidebar-button")
+    .getElementById("sidebar-button")
     .addEventListener("click", onSidebarButtonClick);
 
-  document.querySelector("#memo").addEventListener("input", onChangeMemo);
+  document.getElementById("memo").addEventListener("input", onChangeMemo);
   document
-    .querySelector("#moveup-button")
+    .getElementById("moveup-button")
     .addEventListener("click", moveupMemo);
   document
-    .querySelector("#movedown-button")
+    .getElementById("movedown-button")
     .addEventListener("click", movedownMemo);
 
   // Delete button needs long click
-  let deleteButton = document.querySelector("#delete-button");
+  let deleteButton = document.getElementById("delete-button");
   let deleteButtonMouseDownAt = null;
   if (isSmartPhone()) {
     deleteButton.addEventListener("click", () => {
@@ -76,7 +76,7 @@ function setMemo(memoIdx, text) {
 }
 
 function onSidebarButtonClick() {
-  let container = document.querySelector("#container");
+  let container = document.getElementById("container");
   if (isTabOpened()) {
     container.className = "tab-closed";
   } else {
@@ -85,13 +85,13 @@ function onSidebarButtonClick() {
 }
 
 function isTabOpened() {
-  return document.querySelector("#container").className === "tab-opened";
+  return document.getElementById("container").className === "tab-opened";
 }
 
 let saving = false;
 
 function onChangeMemo() {
-  let memo = document.querySelector("#memo");
+  let memo = document.getElementById("memo");
   if (saving || memo.value.length < 1) return;
   saving = true;
   setTimeout(() => {
@@ -103,9 +103,9 @@ function onChangeMemo() {
 }
 
 function updateMemoListHTML(memoList) {
-  document.querySelector("#memo-list").remove();
+  document.getElementById("memo-list").remove();
   document
-    .querySelector("#left-side-bar")
+    .getElementById("left-side-bar")
     .appendChild(generateMemoListHTML(memoList));
 }
 
@@ -152,7 +152,7 @@ function genelateMemoListItem(text, timeText, idx) {
 function updateMemo() {
   saving = true;
   let text = currentMemoIdx == null ? "" : memoList[currentMemoIdx].text;
-  document.querySelector("#memo").value = text;
+  document.getElementById("memo").value = text;
   saving = false;
   updateMemoListHTML(memoList);
 }
