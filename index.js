@@ -15,23 +15,28 @@ window.addEventListener("DOMContentLoaded", () => {
   // Delete button needs long click
   let deleteButton = document.querySelector("#delete-button");
   let deleteButtonMouseDownAt = null;
-  deleteButton.addEventListener(
-    "mousedown",
-    () => (deleteButtonMouseDownAt = Date.now())
-  );
-  deleteButton.addEventListener("mouseup", () => {
-    if (
-      !deleteButtonMouseDownAt ||
-      Date.now() - deleteButtonMouseDownAt < 2000
-    ) {
-      window.alert("Press and hold for 2 seconds to delete");
-      return;
-    }
-    deleteMemo();
-  });
-
   if (isSmartPhone()) {
-    deleteButton.oncontextmenu = () => false;
+    deleteButton.addEventListener("touch", () => {
+      const confirmResult = window.confirm("Delete a memo ?");
+      if (confirmResult) {
+        deleteMemo();
+      }
+    });
+  } else {
+    deleteButton.addEventListener(
+      "mousedown",
+      () => (deleteButtonMouseDownAt = Date.now())
+    );
+    deleteButton.addEventListener("mouseup", () => {
+      if (
+        !deleteButtonMouseDownAt ||
+        Date.now() - deleteButtonMouseDownAt < 2000
+      ) {
+        window.alert("Press and hold for 2 seconds to delete");
+        return;
+      }
+      deleteMemo();
+    });
   }
 });
 
