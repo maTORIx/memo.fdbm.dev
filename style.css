@@ -10,8 +10,8 @@ body {
 
 #container {
     width: 100%;
-    height: calc(100dvh - 30px);
     height: calc(100vh - 30px);
+    height: calc(100dvh - 30px);
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #333;
@@ -68,8 +68,8 @@ body {
 }
 
 #container.tab-opened #left-side-bar #memo-list {
-    height: calc(100dvh - 30px - 70px);
     height: calc(100vh - 30px - 70px);
+    height: calc(100dvh - 30px - 70px);
     overflow-y: scroll;
 }
 
@@ -263,8 +263,8 @@ body {
 
 @media screen and (max-width: 900px) {
     .hover-button-container {
-        top: calc(100dvh - 100px);
         top: calc(100vh - 100px);
+        top: calc(100dvh - 100px);
     }
 
     #container.tab-opened #memo {
