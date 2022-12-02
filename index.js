@@ -16,7 +16,7 @@ window.addEventListener("DOMContentLoaded", () => {
   let deleteButton = document.querySelector("#delete-button");
   let deleteButtonMouseDownAt = null;
   if (isSmartPhone()) {
-    deleteButton.addEventListener("touch", () => {
+    deleteButton.addEventListener("click", () => {
       const confirmResult = window.confirm("Delete a memo ?");
       if (confirmResult) {
         deleteMemo();
