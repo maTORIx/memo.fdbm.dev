@@ -6,6 +6,12 @@ body {
     font-family: "BIZ UDPGothic", sans-serif;
     width: 100vw;
     overflow-x: hidden;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+button {
+    color: var(--text-color);
 }
 
 #container {
@@ -14,22 +20,23 @@ body {
     height: calc(100dvh - 30px);
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid var(--line-color);
 }
 
 #container #memo {
-
     height: 100%;
     transition: .5s;
     padding: min(5vw, 3rem);
     font-size: 1.1rem;
     resize: none;
     border: none;
-
+    caret-color: var(--text-color);
+    color: var(--text-color);
 }
 
 #container.tab-closed #memo {
     width: calc(100vw - 70px);
+    background-color: var(--bg-color);
 }
 
 #container #memo:focus {
@@ -42,7 +49,7 @@ body {
 
 #left-side-bar {
     transition: .5s;
-    border-right: 1px solid #333;
+    border-right: 1px solid var(--line-color);
 }
 
 #container.tab-opened #left-side-bar {
@@ -100,8 +107,8 @@ body {
 }
 
 #container #left-side-bar #memo-list div.selected {
-    background-color: #000;
-    color: #fff;
+    background-color: var(--text-color);
+    color: var(--bg-color);
 }
 
 #delete-button {
@@ -286,4 +293,20 @@ footer {
     display: flex;
     justify-content: center;
     font-family: "DotGothic16", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --line-color: #ddd;
+        --text-color: #fff;
+        --bg-color: #000;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --line-color: #333;
+        --text-color: #000;
+        --bg-color: #eee;
+    }
 }
