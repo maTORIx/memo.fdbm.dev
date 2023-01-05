@@ -32,6 +32,7 @@ button {
     border: none;
     caret-color: var(--text-color);
     color: var(--text-color);
+    background-color: var(--bg-color);
 }
 
 #container.tab-closed #memo {
