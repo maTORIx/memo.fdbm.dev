@@ -139,6 +139,7 @@ function genelateMemoListItem(text, timeText, idx) {
   elem.addEventListener("click", () => {
     currentMemoIdx = idx;
     updateMemo();
+    save()
     if (isSmartPhone() && isTabOpened()) {
       onSidebarButtonClick();
     }
