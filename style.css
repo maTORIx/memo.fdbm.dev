@@ -10,6 +10,17 @@ body {
     color: var(--text-color);
 }
 
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: var(--bg-color);
+    border: none;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--text-color);
+}
+
 button {
     color: var(--text-color);
 }
